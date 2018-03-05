@@ -14,6 +14,8 @@
 		B890EBC3204D483400517606 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B890EBC1204D483400517606 /* LaunchScreen.storyboard */; };
 		B890EBCE204D483400517606 /* ARGamesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890EBCD204D483400517606 /* ARGamesTests.swift */; };
 		B890EBD9204D483500517606 /* ARGamesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890EBD8204D483500517606 /* ARGamesUITests.swift */; };
+		B890EBE7204D5B9D00517606 /* homeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890EBE6204D5B9D00517606 /* homeViewController.swift */; };
+		B890EBE9204D610200517606 /* ARViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890EBE8204D610200517606 /* ARViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,8 @@
 		B890EBD4204D483500517606 /* ARGamesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARGamesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B890EBD8204D483500517606 /* ARGamesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGamesUITests.swift; sourceTree = "<group>"; };
 		B890EBDA204D483500517606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B890EBE6204D5B9D00517606 /* homeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = homeViewController.swift; sourceTree = "<group>"; };
+		B890EBE8204D610200517606 /* ARViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +103,8 @@
 			children = (
 				B890EBB8204D483400517606 /* AppDelegate.swift */,
 				B890EBBA204D483400517606 /* ViewController.swift */,
+				B890EBE6204D5B9D00517606 /* homeViewController.swift */,
+				B890EBE8204D610200517606 /* ARViewController.swift */,
 				B890EBBC204D483400517606 /* Main.storyboard */,
 				B890EBBF204D483400517606 /* Assets.xcassets */,
 				B890EBC1204D483400517606 /* LaunchScreen.storyboard */,
@@ -260,7 +266,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B890EBBB204D483400517606 /* ViewController.swift in Sources */,
+				B890EBE7204D5B9D00517606 /* homeViewController.swift in Sources */,
 				B890EBB9204D483400517606 /* AppDelegate.swift in Sources */,
+				B890EBE9204D610200517606 /* ARViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
