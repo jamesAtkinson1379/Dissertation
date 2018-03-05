@@ -1,0 +1,563 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B890EBB9204D483400517606 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890EBB8204D483400517606 /* AppDelegate.swift */; };
+		B890EBBB204D483400517606 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890EBBA204D483400517606 /* ViewController.swift */; };
+		B890EBBE204D483400517606 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B890EBBC204D483400517606 /* Main.storyboard */; };
+		B890EBC0204D483400517606 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B890EBBF204D483400517606 /* Assets.xcassets */; };
+		B890EBC3204D483400517606 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B890EBC1204D483400517606 /* LaunchScreen.storyboard */; };
+		B890EBCE204D483400517606 /* ARGamesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890EBCD204D483400517606 /* ARGamesTests.swift */; };
+		B890EBD9204D483500517606 /* ARGamesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890EBD8204D483500517606 /* ARGamesUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B890EBCA204D483400517606 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B890EBAD204D483300517606 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B890EBB4204D483400517606;
+			remoteInfo = ARGames;
+		};
+		B890EBD5204D483500517606 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B890EBAD204D483300517606 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B890EBB4204D483400517606;
+			remoteInfo = ARGames;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B890EBB5204D483400517606 /* ARGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B890EBB8204D483400517606 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		B890EBBA204D483400517606 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B890EBBD204D483400517606 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B890EBBF204D483400517606 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B890EBC2204D483400517606 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		B890EBC4204D483400517606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B890EBC9204D483400517606 /* ARGamesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARGamesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B890EBCD204D483400517606 /* ARGamesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGamesTests.swift; sourceTree = "<group>"; };
+		B890EBCF204D483500517606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B890EBD4204D483500517606 /* ARGamesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ARGamesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B890EBD8204D483500517606 /* ARGamesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARGamesUITests.swift; sourceTree = "<group>"; };
+		B890EBDA204D483500517606 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B890EBB2204D483400517606 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B890EBC6204D483400517606 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B890EBD1204D483500517606 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B890EBAC204D483300517606 = {
+			isa = PBXGroup;
+			children = (
+				B890EBB7204D483400517606 /* ARGames */,
+				B890EBCC204D483400517606 /* ARGamesTests */,
+				B890EBD7204D483500517606 /* ARGamesUITests */,
+				B890EBB6204D483400517606 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B890EBB6204D483400517606 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B890EBB5204D483400517606 /* ARGames.app */,
+				B890EBC9204D483400517606 /* ARGamesTests.xctest */,
+				B890EBD4204D483500517606 /* ARGamesUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B890EBB7204D483400517606 /* ARGames */ = {
+			isa = PBXGroup;
+			children = (
+				B890EBB8204D483400517606 /* AppDelegate.swift */,
+				B890EBBA204D483400517606 /* ViewController.swift */,
+				B890EBBC204D483400517606 /* Main.storyboard */,
+				B890EBBF204D483400517606 /* Assets.xcassets */,
+				B890EBC1204D483400517606 /* LaunchScreen.storyboard */,
+				B890EBC4204D483400517606 /* Info.plist */,
+			);
+			path = ARGames;
+			sourceTree = "<group>";
+		};
+		B890EBCC204D483400517606 /* ARGamesTests */ = {
+			isa = PBXGroup;
+			children = (
+				B890EBCD204D483400517606 /* ARGamesTests.swift */,
+				B890EBCF204D483500517606 /* Info.plist */,
+			);
+			path = ARGamesTests;
+			sourceTree = "<group>";
+		};
+		B890EBD7204D483500517606 /* ARGamesUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B890EBD8204D483500517606 /* ARGamesUITests.swift */,
+				B890EBDA204D483500517606 /* Info.plist */,
+			);
+			path = ARGamesUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B890EBB4204D483400517606 /* ARGames */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B890EBDD204D483500517606 /* Build configuration list for PBXNativeTarget "ARGames" */;
+			buildPhases = (
+				B890EBB1204D483400517606 /* Sources */,
+				B890EBB2204D483400517606 /* Frameworks */,
+				B890EBB3204D483400517606 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ARGames;
+			productName = ARGames;
+			productReference = B890EBB5204D483400517606 /* ARGames.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B890EBC8204D483400517606 /* ARGamesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B890EBE0204D483500517606 /* Build configuration list for PBXNativeTarget "ARGamesTests" */;
+			buildPhases = (
+				B890EBC5204D483400517606 /* Sources */,
+				B890EBC6204D483400517606 /* Frameworks */,
+				B890EBC7204D483400517606 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B890EBCB204D483400517606 /* PBXTargetDependency */,
+			);
+			name = ARGamesTests;
+			productName = ARGamesTests;
+			productReference = B890EBC9204D483400517606 /* ARGamesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		B890EBD3204D483500517606 /* ARGamesUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B890EBE3204D483500517606 /* Build configuration list for PBXNativeTarget "ARGamesUITests" */;
+			buildPhases = (
+				B890EBD0204D483500517606 /* Sources */,
+				B890EBD1204D483500517606 /* Frameworks */,
+				B890EBD2204D483500517606 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B890EBD6204D483500517606 /* PBXTargetDependency */,
+			);
+			name = ARGamesUITests;
+			productName = ARGamesUITests;
+			productReference = B890EBD4204D483500517606 /* ARGamesUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B890EBAD204D483300517606 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = "james atkinson";
+				TargetAttributes = {
+					B890EBB4204D483400517606 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					B890EBC8204D483400517606 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B890EBB4204D483400517606;
+					};
+					B890EBD3204D483500517606 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = B890EBB4204D483400517606;
+					};
+				};
+			};
+			buildConfigurationList = B890EBB0204D483300517606 /* Build configuration list for PBXProject "ARGames" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B890EBAC204D483300517606;
+			productRefGroup = B890EBB6204D483400517606 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B890EBB4204D483400517606 /* ARGames */,
+				B890EBC8204D483400517606 /* ARGamesTests */,
+				B890EBD3204D483500517606 /* ARGamesUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B890EBB3204D483400517606 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B890EBC3204D483400517606 /* LaunchScreen.storyboard in Resources */,
+				B890EBC0204D483400517606 /* Assets.xcassets in Resources */,
+				B890EBBE204D483400517606 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B890EBC7204D483400517606 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B890EBD2204D483500517606 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B890EBB1204D483400517606 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B890EBBB204D483400517606 /* ViewController.swift in Sources */,
+				B890EBB9204D483400517606 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B890EBC5204D483400517606 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B890EBCE204D483400517606 /* ARGamesTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B890EBD0204D483500517606 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B890EBD9204D483500517606 /* ARGamesUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B890EBCB204D483400517606 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B890EBB4204D483400517606 /* ARGames */;
+			targetProxy = B890EBCA204D483400517606 /* PBXContainerItemProxy */;
+		};
+		B890EBD6204D483500517606 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B890EBB4204D483400517606 /* ARGames */;
+			targetProxy = B890EBD5204D483500517606 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B890EBBC204D483400517606 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B890EBBD204D483400517606 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B890EBC1204D483400517606 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B890EBC2204D483400517606 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B890EBDB204D483500517606 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		B890EBDC204D483500517606 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B890EBDE204D483500517606 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LJ7ASB5S56;
+				INFOPLIST_FILE = ARGames/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JSA.ARGames;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		B890EBDF204D483500517606 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LJ7ASB5S56;
+				INFOPLIST_FILE = ARGames/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JSA.ARGames;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		B890EBE1204D483500517606 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LJ7ASB5S56;
+				INFOPLIST_FILE = ARGamesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JSA.ARGamesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARGames.app/ARGames";
+			};
+			name = Debug;
+		};
+		B890EBE2204D483500517606 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LJ7ASB5S56;
+				INFOPLIST_FILE = ARGamesTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JSA.ARGamesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ARGames.app/ARGames";
+			};
+			name = Release;
+		};
+		B890EBE4204D483500517606 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LJ7ASB5S56;
+				INFOPLIST_FILE = ARGamesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JSA.ARGamesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ARGames;
+			};
+			name = Debug;
+		};
+		B890EBE5204D483500517606 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = LJ7ASB5S56;
+				INFOPLIST_FILE = ARGamesUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = JSA.ARGamesUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ARGames;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B890EBB0204D483300517606 /* Build configuration list for PBXProject "ARGames" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B890EBDB204D483500517606 /* Debug */,
+				B890EBDC204D483500517606 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B890EBDD204D483500517606 /* Build configuration list for PBXNativeTarget "ARGames" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B890EBDE204D483500517606 /* Debug */,
+				B890EBDF204D483500517606 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B890EBE0204D483500517606 /* Build configuration list for PBXNativeTarget "ARGamesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B890EBE1204D483500517606 /* Debug */,
+				B890EBE2204D483500517606 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B890EBE3204D483500517606 /* Build configuration list for PBXNativeTarget "ARGamesUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B890EBE4204D483500517606 /* Debug */,
+				B890EBE5204D483500517606 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B890EBAD204D483300517606 /* Project object */;
+}
