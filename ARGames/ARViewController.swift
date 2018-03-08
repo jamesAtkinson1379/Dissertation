@@ -16,6 +16,7 @@ class ARViewController: UIViewController {
         super.viewDidLoad()
         addBox()
         addTapGestureToSceneView()
+        // test
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
