@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B8500BC82076733000DA400C /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8500BC72076733000DA400C /* GameState.swift */; };
+		B85139DC207388A70044E8CB /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85139DB207388A70044E8CB /* Board.swift */; };
+		B85139DE207389150044E8CB /* NaughtsAndCrosses.swift in Sources */ = {isa = PBXBuildFile; fileRef = B85139DD207389150044E8CB /* NaughtsAndCrosses.swift */; };
 		B890EBB9204D483400517606 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890EBB8204D483400517606 /* AppDelegate.swift */; };
 		B890EBBB204D483400517606 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B890EBBA204D483400517606 /* ViewController.swift */; };
 		B890EBBE204D483400517606 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B890EBBC204D483400517606 /* Main.storyboard */; };
@@ -36,6 +39,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B8500BC72076733000DA400C /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
+		B85139DB207388A70044E8CB /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		B85139DD207389150044E8CB /* NaughtsAndCrosses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaughtsAndCrosses.swift; sourceTree = "<group>"; };
 		B890EBB5204D483400517606 /* ARGames.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ARGames.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B890EBB8204D483400517606 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B890EBBA204D483400517606 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -106,9 +112,12 @@
 				B890EBE6204D5B9D00517606 /* homeViewController.swift */,
 				B890EBE8204D610200517606 /* ARViewController.swift */,
 				B890EBBC204D483400517606 /* Main.storyboard */,
+				B85139DB207388A70044E8CB /* Board.swift */,
 				B890EBBF204D483400517606 /* Assets.xcassets */,
+				B85139DD207389150044E8CB /* NaughtsAndCrosses.swift */,
 				B890EBC1204D483400517606 /* LaunchScreen.storyboard */,
 				B890EBC4204D483400517606 /* Info.plist */,
+				B8500BC72076733000DA400C /* GameState.swift */,
 			);
 			path = ARGames;
 			sourceTree = "<group>";
@@ -265,8 +274,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8500BC82076733000DA400C /* GameState.swift in Sources */,
 				B890EBBB204D483400517606 /* ViewController.swift in Sources */,
+				B85139DE207389150044E8CB /* NaughtsAndCrosses.swift in Sources */,
 				B890EBE7204D5B9D00517606 /* homeViewController.swift in Sources */,
+				B85139DC207388A70044E8CB /* Board.swift in Sources */,
 				B890EBB9204D483400517606 /* AppDelegate.swift in Sources */,
 				B890EBE9204D610200517606 /* ARViewController.swift in Sources */,
 			);
