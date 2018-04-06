@@ -26,7 +26,7 @@ class ARViewController: UIViewController {
         configuration.planeDetection = .horizontal
         
         sceneView.session.run(configuration)
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        //sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -51,18 +51,31 @@ class ARViewController: UIViewController {
     @objc func didTap(withGestureRecognizer recognizer: UIGestureRecognizer) {
         let tapLocation = recognizer.location(in: sceneView)
         let hitTestResults = sceneView.hitTest(tapLocation)
-        guard let node = hitTestResults.first?.node else {
-            let hitTestResultsWithFeaturePoints = sceneView.hitTest(tapLocation, types: .featurePoint)
-            
-            if let hitTestResultWithFeaturePoints = hitTestResultsWithFeaturePoints.first {
-                let translation = hitTestResultWithFeaturePoints.worldTransform.translation
-                let board = NaughtsAndCrosses(height:0.1,width:0.1,length:0.01,x: translation.x,y:translation.y,z:translation.z)
-                sceneView.scene.rootNode.addChildNode(board.node)
-                //addBoard(x: translation.x, y: translation.y, z: translation.z)
+        if(sceneView.scene.rootNode.childNode(withName: "board", recursively: false) == nil){
+            guard let node = hitTestResults.first?.node else {
+                let hitTestResultsWithFeaturePoints = sceneView.hitTest(tapLocation, types: .featurePoint)
+                
+                if let hitTestResultWithFeaturePoints = hitTestResultsWithFeaturePoints.first {
+                    let translation = hitTestResultWithFeaturePoints.worldTransform.translation
+                    let board = NaughtsAndCrosses(height:0.1,width:0.1,length:0.01,x: translation.x,y:translation.y,z:translation.z)
+                    sceneView.scene.rootNode.addChildNode(board.boardNode)
+                }
+                return
             }
-            return
+            node.removeFromParentNode()
+        }else{
+            guard let node = hitTestResults.first?.node.parent?.childNode(withName: "square", recursively: false) else {
+                let hitTestResultsWithFeaturePoints = sceneView.hitTest(tapLocation, types: .featurePoint)
+                
+                if let hitTestResultWithFeaturePoints = hitTestResultsWithFeaturePoints.first {
+                    let translation = hitTestResultWithFeaturePoints.worldTransform.translation
+                    //sceneView.scene.rootNode.childNode(withName: "board", recursively: false)?.childNode(withName: "1", recursively: false)?.addChildNode(board.)
+                }
+                return
+            }
+            node.removeFromParentNode()
+            print(sceneView.scene.rootNode.childNode(withName: "board", recursively: false)!)
         }
-        node.removeFromParentNode()
     }
 
 }

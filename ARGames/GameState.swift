@@ -10,6 +10,23 @@ import Foundation
 
 class GameState{
     
+    //CURRENT PLAYER
+    var currentPlayer: Int
+    //PREVIOUS TURNS
+    //var previousTurns: [Int]
+    //current state of board (array)
+    var currentBoardState:[[Int]]
+    //generate list of possible moves?
+    //win condition
+    //legal moves func
+    var rows: Int
+    var columns: Int
     
+    init(rows: Int = 0, columns: Int = 0){
+        self.rows = rows
+        self.columns = columns
+        currentPlayer = 0
+        currentBoardState = [[0,0,0],[0,0,0],[0,0,0]]
+    }
     
 }

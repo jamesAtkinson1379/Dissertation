@@ -9,22 +9,32 @@
 import Foundation
 import SceneKit
 
+typealias boardPosition = (x:Int, y:Int)
+
 class NaughtsAndCrosses: Board{
     
-    let node:SCNNode
+    let boardNode:SCNNode
     let degreeToRadians:Float = .pi/180
     
     init(height: Float = 0, width: Float = 0,length: Float = 0,x: Float = 0,y: Float = 0,z: Float = -0.2){
-        node = SCNNode()
+        boardNode = SCNNode()
         super.init(rows:4,columns:4,height: height,width: width,length: length,x: x,y: y,z: z)
+        
+        let peices = GamePieces()
         
         var currentRow: Float = 0
         var currentColumn: Float = 0
         let columnOffset = super.width/Float(super.columns)
         let rowOffset = super.height/Float(super.rows)
         var alter = 0
+        var currentSquare = 0
         
         let board = SCNBox(width: CGFloat(super.width), height: CGFloat(super.height),length: CGFloat(super.length), chamferRadius: 0)
+        
+        boardNode.geometry = board
+        boardNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2.0, 1.0, 0.0, 0.0)
+        boardNode.position = SCNVector3(super.x, super.y, super.z)
+        boardNode.name = "board"
         
         let blackSquare = SCNBox(width: CGFloat(columnOffset),
                                  height: CGFloat(rowOffset),
@@ -36,30 +46,29 @@ class NaughtsAndCrosses: Board{
                                  length: CGFloat(0.01), chamferRadius: 0)
         whiteSquare.firstMaterial?.diffuse.contents = UIColor.blue
         
-        let boardNode = SCNNode()
-        boardNode.geometry = board
-        boardNode.position = SCNVector3(super.x, super.y, super.z)
-        boardNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2.0, 1.0, 0.0, 0.0)
-        
-        
         for _ in 1...super.rows{
             for _ in 1...super.columns{
                 if(alter%2 == 0){
                     let blackSquareNode = SCNNode()
+                    blackSquareNode.name = " \(currentSquare)"
                     blackSquareNode.geometry = blackSquare
                     blackSquareNode.position = SCNVector3(((-(width/2-columnOffset/2))+currentColumn),
                                                           ((-(height/2-rowOffset/2))+currentRow),
                                                           0.001)
+                    blackSquareNode.addChildNode(peices.addNaught())
                     boardNode.addChildNode(blackSquareNode)
                     alter = alter + 1
+                    currentSquare = currentSquare + 1
                 }else{
                     let whiteSquareNode = SCNNode()
                     whiteSquareNode.geometry = whiteSquare
+                    whiteSquareNode.name = " \(currentSquare)"
                     whiteSquareNode.position = SCNVector3(((-(width/2-columnOffset/2))+currentColumn),
                                                           ((-(height/2-rowOffset/2))+currentRow),
                                                           0.001)
                     boardNode.addChildNode(whiteSquareNode)
                     alter = alter + 1
+                    currentSquare = currentSquare + 1
                 }
                 currentColumn = currentColumn + columnOffset
             }
@@ -69,10 +78,16 @@ class NaughtsAndCrosses: Board{
             currentRow = currentRow + rowOffset
             currentColumn = 0
         }
-
+        print(boardNode.position)
+    }
+    
+    func movePiece(from:boardPosition,to:boardPosition){
         
-        print(boardNode)
-        node.addChildNode(boardNode)
+        
+    }
+    
+    func putPiece(to:boardPosition){
+        
     }
 
 }
