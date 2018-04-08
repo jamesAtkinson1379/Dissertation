@@ -9,13 +9,17 @@
 import UIKit
 import ARKit
 
+
+
 class ARViewController: UIViewController {
 
     @IBOutlet weak var sceneView: ARSCNView!
+    let board = NaughtsAndCrosses(height:0.1,width:0.1,length:0.01)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addTapGestureToSceneView()
+        addPanGestureToSceneView()
         
         // Do any additional setup after loading the view.
     }
@@ -47,6 +51,9 @@ class ARViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ARViewController.didTap(withGestureRecognizer:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
     }
+    func addPanGestureToSceneView() {
+        
+    }
     
     @objc func didTap(withGestureRecognizer recognizer: UIGestureRecognizer) {
         let tapLocation = recognizer.location(in: sceneView)
@@ -56,25 +63,38 @@ class ARViewController: UIViewController {
                 let hitTestResultsWithFeaturePoints = sceneView.hitTest(tapLocation, types: .featurePoint)
                 
                 if let hitTestResultWithFeaturePoints = hitTestResultsWithFeaturePoints.first {
-                    let translation = hitTestResultWithFeaturePoints.worldTransform.translation
-                    let board = NaughtsAndCrosses(height:0.1,width:0.1,length:0.01,x: translation.x,y:translation.y,z:translation.z)
+                    var translation = hitTestResultWithFeaturePoints.worldTransform.translation
+                    board.placeBoard(x: translation.x,y: translation.y,z: translation.z)
                     sceneView.scene.rootNode.addChildNode(board.boardNode)
                 }
                 return
             }
             node.removeFromParentNode()
         }else{
-            guard let node = hitTestResults.first?.node.parent?.childNode(withName: "square", recursively: false) else {
-                let hitTestResultsWithFeaturePoints = sceneView.hitTest(tapLocation, types: .featurePoint)
-                
-                if let hitTestResultWithFeaturePoints = hitTestResultsWithFeaturePoints.first {
-                    let translation = hitTestResultWithFeaturePoints.worldTransform.translation
-                    //sceneView.scene.rootNode.childNode(withName: "board", recursively: false)?.childNode(withName: "1", recursively: false)?.addChildNode(board.)
+            //need to rethink this function
+            if(Int((hitTestResults.first?.node.name)!) != nil){
+                let node = hitTestResults.first?.node
+                if(board.putPiece(to: Int((node?.name!)!)!)){
+                    if(board.gameState.isWinner){
+                        print("you won")
+                    }
+                    return
+                }else{
+                    print("oops")
                 }
-                return
             }
-            node.removeFromParentNode()
-            print(sceneView.scene.rootNode.childNode(withName: "board", recursively: false)!)
+//            print("before gaurd")
+//            guard let node = hitTestResults.first?.node, node.name == "1" else {
+//                let hitTestResultsWithFeaturePoints = sceneView.hitTest(tapLocation, types: .featurePoint)
+//                print("inside guard")
+//                if let hitTestResultWithFeaturePoints = hitTestResultsWithFeaturePoints.first {
+//                    var translation = hitTestResultWithFeaturePoints.worldTransform.translation
+//                    //sceneView.scene.rootNode.childNode(withName: "board", recursively: false)?.childNode(withName: "1", recursively: false)?.addChildNode(board.)
+//                }
+//                return
+//            }
+            
+            //print(sceneView.scene.rootNode.childNode(withName: "board", recursively: false)!)
         }
     }
 

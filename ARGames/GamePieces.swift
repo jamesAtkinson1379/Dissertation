@@ -19,7 +19,8 @@ class GamePieces{
         self.row = row
         self.column = column
     }
-    
+    //@TODO
+    //change dimensions to be relative to baordsize
     func addNaught() -> SCNNode{
         let naughtNode = SCNNode()
         let naught = SCNTorus(ringRadius: 0.005, pipeRadius: 0.002)
@@ -31,5 +32,18 @@ class GamePieces{
         
         return naughtNode
     }
+    
+    func addCross() -> SCNNode{
+        let naughtNode = SCNNode()
+        let naught = SCNTorus(ringRadius: 0.005, pipeRadius: 0.002)
+        naught.firstMaterial?.diffuse.contents = UIColor.purple
+        
+        naughtNode.geometry = naught
+        naughtNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2.0, 1.0, 0.0, 0.0)
+        naughtNode.position = SCNVector3(0,0,0.006)
+        
+        return naughtNode
+    }
+
 
 }

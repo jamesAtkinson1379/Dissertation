@@ -15,18 +15,27 @@ class GameState{
     //PREVIOUS TURNS
     //var previousTurns: [Int]
     //current state of board (array)
-    var currentBoardState:[[Int]]
+    var currentBoardState:[Int]
     //generate list of possible moves?
     //win condition
     //legal moves func
     var rows: Int
     var columns: Int
+    var isWinner: Bool
     
     init(rows: Int = 0, columns: Int = 0){
         self.rows = rows
         self.columns = columns
-        currentPlayer = 0
-        currentBoardState = [[0,0,0],[0,0,0],[0,0,0]]
+        currentPlayer = 1
+        currentBoardState = [0]
+        isWinner = false
+    }
+    
+    func addPiece(){
+        
+    }
+    func movePiece(){
+        
     }
     
 }
