@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B83E2103207B8E2D0088DD42 /* Draughts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E2102207B8E2B0088DD42 /* Draughts.swift */; };
+		B83E2105207BA6D60088DD42 /* DraughtsGameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83E2104207BA6D60088DD42 /* DraughtsGameState.swift */; };
 		B8500BC82076733000DA400C /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8500BC72076733000DA400C /* GameState.swift */; };
 		B8500BCA2076834100DA400C /* NaughtsAndCrossesGameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8500BC92076834100DA400C /* NaughtsAndCrossesGameState.swift */; };
 		B8500BCC2077811500DA400C /* GamePieces.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8500BCB2077811500DA400C /* GamePieces.swift */; };
@@ -41,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B83E2102207B8E2B0088DD42 /* Draughts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draughts.swift; sourceTree = "<group>"; };
+		B83E2104207BA6D60088DD42 /* DraughtsGameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraughtsGameState.swift; sourceTree = "<group>"; };
 		B8500BC72076733000DA400C /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		B8500BC92076834100DA400C /* NaughtsAndCrossesGameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NaughtsAndCrossesGameState.swift; sourceTree = "<group>"; };
 		B8500BCB2077811500DA400C /* GamePieces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePieces.swift; sourceTree = "<group>"; };
@@ -116,14 +120,16 @@
 				B890EBE6204D5B9D00517606 /* homeViewController.swift */,
 				B890EBE8204D610200517606 /* ARViewController.swift */,
 				B890EBBC204D483400517606 /* Main.storyboard */,
-				B85139DB207388A70044E8CB /* Board.swift */,
 				B890EBBF204D483400517606 /* Assets.xcassets */,
-				B8500BCB2077811500DA400C /* GamePieces.swift */,
+				B85139DB207388A70044E8CB /* Board.swift */,
 				B85139DD207389150044E8CB /* NaughtsAndCrosses.swift */,
+				B83E2102207B8E2B0088DD42 /* Draughts.swift */,
+				B8500BCB2077811500DA400C /* GamePieces.swift */,
+				B8500BC72076733000DA400C /* GameState.swift */,
+				B8500BC92076834100DA400C /* NaughtsAndCrossesGameState.swift */,
+				B83E2104207BA6D60088DD42 /* DraughtsGameState.swift */,
 				B890EBC1204D483400517606 /* LaunchScreen.storyboard */,
 				B890EBC4204D483400517606 /* Info.plist */,
-				B8500BC92076834100DA400C /* NaughtsAndCrossesGameState.swift */,
-				B8500BC72076733000DA400C /* GameState.swift */,
 			);
 			path = ARGames;
 			sourceTree = "<group>";
@@ -287,6 +293,8 @@
 				B8500BCC2077811500DA400C /* GamePieces.swift in Sources */,
 				B890EBE7204D5B9D00517606 /* homeViewController.swift in Sources */,
 				B85139DC207388A70044E8CB /* Board.swift in Sources */,
+				B83E2103207B8E2D0088DD42 /* Draughts.swift in Sources */,
+				B83E2105207BA6D60088DD42 /* DraughtsGameState.swift in Sources */,
 				B890EBB9204D483400517606 /* AppDelegate.swift in Sources */,
 				B890EBE9204D610200517606 /* ARViewController.swift in Sources */,
 			);

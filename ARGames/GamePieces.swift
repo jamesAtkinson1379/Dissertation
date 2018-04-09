@@ -29,6 +29,7 @@ class GamePieces{
         naughtNode.geometry = naught
         naughtNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2.0, 1.0, 0.0, 0.0)
         naughtNode.position = SCNVector3(0,0,0.006)
+        naughtNode.name = "naught"
         
         return naughtNode
     }
@@ -41,6 +42,7 @@ class GamePieces{
         naughtNode.geometry = naught
         naughtNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2.0, 1.0, 0.0, 0.0)
         naughtNode.position = SCNVector3(0,0,0.006)
+        naughtNode.name = "cross"
         
         return naughtNode
     }

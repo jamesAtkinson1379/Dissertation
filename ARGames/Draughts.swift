@@ -1,22 +1,20 @@
 //
-//  NaughtsAndCrosses.swift
+//  Draughts.swift
 //  ARGames
 //
-//  Created by james atkinson on 03/04/2018.
+//  Created by james atkinson on 09/04/2018.
 //  Copyright © 2018 james atkinson. All rights reserved.
 //
 
 import Foundation
-import SceneKit
 
-class NaughtsAndCrosses: Board{
+class Draughts: Board{
     
-    var gameState:NaughtsAndCrossesGameState
+    var gameState:DraughtsGameState
     
     init(height: Float = 0, width: Float = 0,length: Float = 0,x: Float = 0,y: Float = 0,z: Float = -0.2){
-        gameState = NaughtsAndCrossesGameState(rows:3,columns:3)
-        super.init(rows:3,columns:3,height: height,width: width,length: length,x: x,y: y,z: z)
-        //game state implementation
+        gameState = DraughtsGameState(rows:8,columns:8)
+        super.init(rows:8,columns:8,height: height,width: width,length: length,x: x,y: y,z: z)
         print(boardNode.position)
     }
     
@@ -46,11 +44,3 @@ class NaughtsAndCrosses: Board{
     }
     
 }
-
-extension SCNNode{
-    var type: String{
-        guard let temp = self.geometry?.name else {return "nil"}
-        return temp
-    }
-}
-
