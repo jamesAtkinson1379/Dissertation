@@ -9,93 +9,34 @@
 import UIKit
 import ARKit
 
-
-
 class ARViewController: UIViewController {
 
     @IBOutlet weak var sceneView: ARSCNView!
     //let board = NaughtsAndCrosses(height:0.1,width:0.1,length:0.01)
     let board = Draughts(height:0.3,width:0.3, length: 0.01)
+    var startNode: Int = 0
+    var endNode: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addTapGestureToSceneView()
         addPanGestureToSceneView()
-        
         // Do any additional setup after loading the view.
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
-        
         sceneView.session.run(configuration)
-        //sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         sceneView.session.pause()
     }
-    
-//    func addBoard(x: Float = 0, y: Float = 0, z: Float = -0.2) {
-//        let box = SCNBox(width: 0.1, height: 0.01, length: 0.1, chamferRadius: 0)
-//        
-//        let boxNode = SCNNode()
-//        boxNode.geometry = box
-//        boxNode.position = SCNVector3(x, y, z)
-//        print(boxNode)
-//        sceneView.scene.rootNode.addChildNode(boxNode)
-//    }
-    
     func addTapGestureToSceneView() {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(ARViewController.didTap(withGestureRecognizer:)))
         sceneView.addGestureRecognizer(tapGestureRecognizer)
     }
-    func addPanGestureToSceneView() {
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ARViewController.didPan(withGestureRecognizer:)))
-        sceneView.addGestureRecognizer(panGestureRecognizer)
-    }
-    
-    @objc func didPan(withGestureRecognizer recognizer: UIGestureRecognizer){
-        
-        var startNode: Int = 0
-        var endNode: Int = 0
-        
-        switch recognizer.state{
-        case .began:
-            let startPanLocation = recognizer.location(in: sceneView)
-            let hitTestResults = sceneView.hitTest(startPanLocation)
-            
-            if(hitTestResults.first?.node.parent?.parent?.name == "board"){
-                let node = hitTestResults.first?.node.parent
-                print("Start: " + "\(node?.name)")
-                startNode = Int((node?.name)!)!
-            }
-            print("began")
-        case .cancelled:
-            print("cancelled")
-        case .changed:
-            print("changed")
-        case .ended:
-            let endPanLocation = recognizer.location(in: sceneView)
-            let hitTestResults = sceneView.hitTest(endPanLocation)
-            
-            if(hitTestResults.first?.node.parent?.name == "board"){
-                let node = hitTestResults.first?.node
-                print("end: " + "\(node?.name)")
-                endNode = Int((node?.name)!)!
-            }
-            print(startNode)
-            print(endNode)
-            board.movePiece(from: startNode, to: endNode)
-            print("ended")
-        case .failed:
-            print("failed")
-        default: break
-        }
-    }
-    
     @objc func didTap(withGestureRecognizer recognizer: UIGestureRecognizer) {
         let tapLocation = recognizer.location(in: sceneView)
         let hitTestResults = sceneView.hitTest(tapLocation)
@@ -112,9 +53,9 @@ class ARViewController: UIViewController {
             }
             node.removeFromParentNode()
         }else{
-            if(hitTestResults.first?.node.parent?.name == "board"){
+            if(hitTestResults.first?.node.parent?.name == "board" && false){
                 let node = hitTestResults.first?.node
-                if(board.putPiece(to: Int((node?.name!)!)!)){
+                if(board.putPiece(to: Int((node?.name!)!)!,type: 0)){
                     if(board.gameState.isWinner){
                         print("you won")
                     }
@@ -123,20 +64,45 @@ class ARViewController: UIViewController {
                     print("oops")
                 }
             }
-//            print("before gaurd")
-//            guard let node = hitTestResults.first?.node, node.name == "1" else {
-//                let hitTestResultsWithFeaturePoints = sceneView.hitTest(tapLocation, types: .featurePoint)
-//                print("inside guard")
-//                if let hitTestResultWithFeaturePoints = hitTestResultsWithFeaturePoints.first {
-//                    var translation = hitTestResultWithFeaturePoints.worldTransform.translation
-//                    //sceneView.scene.rootNode.childNode(withName: "board", recursively: false)?.childNode(withName: "1", recursively: false)?.addChildNode(board.)
-//                }
-//                return
-//            }
-            
-            //print(sceneView.scene.rootNode.childNode(withName: "board", recursively: false)!)
         }
     }
+    func addPanGestureToSceneView() {
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ARViewController.didPan(withGestureRecognizer:)))
+        sceneView.addGestureRecognizer(panGestureRecognizer)
+    }
+    @objc func didPan(withGestureRecognizer recognizer: UIGestureRecognizer){
+        switch recognizer.state{
+        case .began:
+            let startPanLocation = recognizer.location(in: sceneView)
+            let hitTestResults = sceneView.hitTest(startPanLocation)
+            
+            if(hitTestResults.first?.node.parent?.name != "board"){
+                let node = hitTestResults.first?.node.parent
+                print("Start: " + "\(node?.name)")
+                startNode = Int((node?.name)!)!
+                board.generatePossibleMoves(from: startNode)
+            }
+        case .cancelled:
+            print("cancelled")
+        //case .changed:
+            //print("changed")
+        case .ended:
+            let endPanLocation = recognizer.location(in: sceneView)
+            let hitTestResults = sceneView.hitTest(endPanLocation)
+            
+            if(hitTestResults.first?.node.parent?.name == "board"){
+                let node = hitTestResults.first?.node
+                print("end: " + "\(node?.name)")
+                endNode = Int((node?.name)!)!
+                board.movePiece(from: startNode, to: endNode)
+            }
+        case .failed:
+            print("failed")
+        default: break
+        }
+    }
+    
+    
 
 }
 extension float4x4 {

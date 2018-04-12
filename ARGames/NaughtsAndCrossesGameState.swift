@@ -32,9 +32,13 @@ class NaughtsAndCrossesGameState: GameState{
     }
     //@TODO
     //maybe move add is legal here instead of in board class
-    func addPiece(to: Int) {
-        super.currentBoardState[to] = super.currentPlayer
-        playerWon()
+    func addPiece(to: Int) -> Bool {
+        if(isLegal(to: to)){
+            super.currentBoardState[to] = super.currentPlayer
+            playerWon()
+            return true
+        }
+        return false
     }
     
     //win condition

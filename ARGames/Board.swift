@@ -21,10 +21,12 @@ class Board{
     var z: Float
     
     var boardNode: SCNNode
-    let peices = GamePieces()
+    let pieces: GamePieces
     
+    //initilises a generic checkered board which can be used by multiple differnt games
     init(rows: Int = 0, columns: Int = 0,height: Float = 0.1, width: Float = 0.1,length: Float = 0.01,
         x: Float = 0, y: Float = 0, z: Float = -0.2 ){
+        
         self.rows = rows
         self.columns = columns
         self.height = height
@@ -34,8 +36,7 @@ class Board{
         self.y = y
         self.z = z
         
-        boardNode = SCNNode()
-        
+        //sets up some useful variables
         var currentRow: Float = 0
         var currentColumn: Float = 0
         let columnOffset = width/Float(columns)
@@ -43,26 +44,27 @@ class Board{
         var alter = 0
         var currentSquare = 0
         
+        //creates a box shaped like a board
         let board = SCNBox(width: CGFloat(width), height: CGFloat(height),length: CGFloat(length), chamferRadius: 0)
+        //gives the board access to all type of pieces
+        pieces = GamePieces(rows:rows,columns:columns,width:width,height:height,length:length)
         
+        //sets up the board and rotates it to horizontal
+        boardNode = SCNNode()
         boardNode.geometry = board
         boardNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2.0, 1.0, 0.0, 0.0)
-        //boardNode.position = SCNVector3(super.x, super.y, super.z)
         boardNode.name = "board"
         
-        let blackSquare = SCNBox(width: CGFloat(columnOffset),
-                                 height: CGFloat(rowOffset),
-                                 length: CGFloat(0.01), chamferRadius: 0)
-        blackSquare.firstMaterial?.diffuse.contents = UIColor.black
-        
-        let whiteSquare = SCNBox(width: CGFloat(columnOffset),
-                                 height: CGFloat(rowOffset),
-                                 length: CGFloat(0.01), chamferRadius: 0)
-        whiteSquare.firstMaterial?.diffuse.contents = UIColor.blue
-        
+        //loops through the rows and columns of the board
         for _ in 1...rows{
             for _ in 1...columns{
+                //creates the alternating effect 
                 if(alter%2 == 0){
+                    let blackSquare = SCNBox(width: CGFloat(columnOffset),
+                                             height: CGFloat(rowOffset),
+                                             length: CGFloat(0.01), chamferRadius: 0)
+                    blackSquare.firstMaterial?.diffuse.contents = UIColor.black
+                    
                     let blackSquareNode = SCNNode()
                     blackSquareNode.name = "\(currentSquare)"
                     blackSquareNode.geometry = blackSquare
@@ -73,6 +75,11 @@ class Board{
                     alter = alter + 1
                     currentSquare = currentSquare + 1
                 }else{
+                    let whiteSquare = SCNBox(width: CGFloat(columnOffset),
+                                             height: CGFloat(rowOffset),
+                                             length: CGFloat(0.01), chamferRadius: 0)
+                    whiteSquare.firstMaterial?.diffuse.contents = UIColor.blue
+                    
                     let whiteSquareNode = SCNNode()
                     whiteSquareNode.geometry = whiteSquare
                     whiteSquareNode.name = "\(currentSquare)"
@@ -93,7 +100,7 @@ class Board{
         }
         
     }
-    
+    //allows the user to place the baord
     func placeBoard(x: Float, y: Float, z: Float){
         boardNode.position = SCNVector3(x:x, y:y, z:z)
     }

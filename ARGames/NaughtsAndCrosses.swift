@@ -21,26 +21,17 @@ class NaughtsAndCrosses: Board{
     }
     
     func movePiece(from: Int,to:Int){
-        let legal = true
-        print("begin move")
-        if(legal){
-            print(from)
-            print(to)
-            print(boardNode.childNodes[from].childNodes.count)
-            //boardNode.childNodes[from].childNodes[0].removeFromParentNode()
-            boardNode.childNodes[to].addChildNode(peices.addNaught())
-        }
+        
     }
     
     func putPiece(to:Int) -> Bool{
-        let legal = gameState.isLegal(to:to) //testMove(to)
+        let legal = gameState.addPiece(to: to)
         if(legal){
             if(gameState.currentPlayer == 1){
-                boardNode.childNodes[to].addChildNode(peices.addNaught())
+                boardNode.childNodes[to].addChildNode(pieces.addNaught())
             }else{
-                boardNode.childNodes[to].addChildNode(peices.addCross())
+                boardNode.childNodes[to].addChildNode(pieces.addCross())
             }
-            gameState.addPiece(to: to)
         }
         return legal
     }
