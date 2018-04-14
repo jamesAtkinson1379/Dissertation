@@ -11,13 +11,12 @@ import Foundation
 class DraughtsGameState: GameState{
     
     var possibleMoves: [Int]
-    var possibleToRemove: [Int]
-    var toRemove: [Int]
+    var toRemove = 0
+    var lastPieceMoved = 0
+    var firstMove = true
     
     override init(rows: Int = 0, columns: Int = 0){
         possibleMoves = []
-        possibleToRemove = []
-        toRemove = []
         super.init(rows: rows, columns: columns)
         currentBoardState = Array(repeating: 0, count: (rows*columns))
     }
@@ -33,7 +32,10 @@ class DraughtsGameState: GameState{
     func isLegal(from:Int,to:Int) -> Bool{
         for i in 0..<possibleMoves.count{
             if(currentPlayer == typeToPlayer(type: currentBoardState[from])){
-                if(possibleMoves[i] == to){
+                print(possibleMoves[i])
+                print("to: \(to)")
+                print(lastPieceMoved)
+                if(possibleMoves[i] == to && (lastPieceMoved == 0 || lastPieceMoved == from)){
                     return true
                 }
             }
@@ -66,18 +68,17 @@ class DraughtsGameState: GameState{
     }
     
     func initialMoveForward(from: Int, type: Int){
-        print("initial from: \(from)")
         if(checkOneStepForward(from: from)){
             if(currentBoardState[(from+rows) - 1] != 0 && currentBoardState[(from+rows) - 1] != type && currentBoardState[(from+(2*rows) - 2)] == 0){
-                possibleToRemove += [(from+rows) - 1]
-                recursiveJumpForward(from: (from+(2*rows)) - 2, type: type)
-            }else if(checkOneStepLeft(from: from) && checkOneStepForward(from: from) && currentBoardState[(from+rows) - 1] == 0 ){
+                possibleMoves += [(from+(2*rows)) - 2]
+                //recursiveJumpForward(from: (from+(2*rows)) - 2, type: type)
+            }else if(checkOneStepLeft(from: from) && checkOneStepForward(from: from) && currentBoardState[(from+rows) - 1] == 0 && firstMove){
                 possibleMoves += [(from+rows-1)]
             }
             if(currentBoardState[(from+rows) + 1] != 0 && currentBoardState[(from+rows) + 1] != type && currentBoardState[(from+(2*rows) + 2)] == 0){
-                possibleToRemove += [(from+rows) + 1]
-               recursiveJumpForward(from: (from+(2*rows)) + 2, type: type)
-            }else if(checkOneStepRight(from: from) && checkOneStepForward(from: from) && currentBoardState[(from+rows) + 1] == 0 ){
+                possibleMoves += [(from+(2*rows)) + 2]
+               //recursiveJumpForward(from: (from+(2*rows)) + 2, type: type)
+            }else if(checkOneStepRight(from: from) && checkOneStepForward(from: from) && currentBoardState[(from+rows) + 1] == 0 && firstMove){
                 possibleMoves += [(from+rows+1)]
             }
         }
@@ -90,11 +91,9 @@ class DraughtsGameState: GameState{
         }
         if(checkTwoStepForward(from: from)){
                 if(currentBoardState[(from+rows) - 1] != type && currentBoardState[(from+rows) - 1] != 0){
-                    possibleToRemove += [(from+rows) - 1]
                     recursiveJumpForward(from: (from+(2*rows) - 2), type: type)
                 }
                 if(currentBoardState[(from+rows) + 1] != type && currentBoardState[(from+rows) + 1] != 0){
-                    possibleToRemove += [(from+rows) + 1]
                     recursiveJumpForward(from: (from+(2*rows) + 2), type: type)
                 }
         }
@@ -103,18 +102,17 @@ class DraughtsGameState: GameState{
     func initialMoveBackward(from: Int, type: Int){
         print("initial from: \(from)")
         if(checkOneStepBackward(from: from)){
-            if(currentBoardState[(from-rows) - 1] != 0 && currentBoardState[(from-rows) - 1] != type &&
-                currentBoardState[(from-(2*rows) - 2)] == 0){
-                possibleToRemove += [(from-rows) - 1]
-                recursiveJumpBackward(from: (from-(2*rows)) - 2, type: type)
-            }else if(checkOneStepLeft(from: from) && checkOneStepBackward(from: from) && currentBoardState[(from-rows) - 1] == 0){
+            if(checkTwoStepBackward(from:from) && currentBoardState[(from-rows) - 1] != 0 && currentBoardState[(from-rows) - 1] != type && currentBoardState[(from-(2*rows) - 2)] == 0){
+                possibleMoves += [(from-(2*rows)) - 2]
+                //recursiveJumpBackward(from: (from-(2*rows)) - 2, type: type)
+            }else if(checkOneStepLeft(from: from) && checkOneStepBackward(from: from) && currentBoardState[(from-rows) - 1] == 0 && firstMove){
                 possibleMoves += [(from-rows-1)]
             }
             if(currentBoardState[(from-rows) + 1] != 0 && currentBoardState[(from-rows) + 1] != type &&
                 currentBoardState[(from-(2*rows) + 2)] == 0){
-                possibleToRemove += [(from-rows) + 1]
-                recursiveJumpBackward(from: (from-(2*rows)) + 2, type: type)
-            }else if(checkOneStepRight(from: from) && checkOneStepBackward(from: from) && currentBoardState[(from-rows) + 1] == 0){
+                possibleMoves += [(from-(2*rows)) + 2]
+                //recursiveJumpBackward(from: (from-(2*rows)) + 2, type: type)
+            }else if(checkOneStepRight(from: from) && checkOneStepBackward(from: from) && currentBoardState[(from-rows) + 1] == 0 && firstMove){
                 possibleMoves += [(from-rows+1)]
             }
         }
@@ -127,11 +125,9 @@ class DraughtsGameState: GameState{
         }
         if(checkTwoStepBackward(from: from)){
             if(currentBoardState[(from-rows) - 1] != type && currentBoardState[(from-rows) - 1] != 0){
-                possibleToRemove += [(from-rows) - 1]
                 recursiveJumpBackward(from: (from-(2*rows) - 2), type: type)
             }
             if(currentBoardState[(from-rows) + 1] != type && currentBoardState[(from-rows) + 1] != 0){
-                possibleToRemove += [(from-rows) + 1]
                 recursiveJumpBackward(from: (from-(2*rows) + 2), type: type)
             }
         }
@@ -140,123 +136,96 @@ class DraughtsGameState: GameState{
     func initialMoveKing(from: Int, type: Int){
         if(checkOneStepForward(from: from)){
             if(currentBoardState[(from+rows) - 1] != 0 && currentBoardState[(from+rows) - 1] != type && currentBoardState[(from+(2*rows) - 2)] == 0){
-                possibleToRemove += [(from+rows) - 1]
-                //recursiveJumpKing(from: (from+(2*rows)) - 2, type: type)
-            }else if(checkOneStepLeft(from: from) && checkOneStepForward(from: from) && currentBoardState[(from+rows) - 1] == 0 ){
+                possibleMoves += [(from+(2*rows)) - 2]
+                //recursiveJumpKing(previous: from,current: (from+(2*rows)) - 2, type: type)
+            }else if(checkOneStepLeft(from: from) && checkOneStepForward(from: from) && currentBoardState[(from+rows) - 1] == 0 && firstMove){
                 possibleMoves += [(from+rows-1)]
             }
             if(currentBoardState[(from+rows) + 1] != 0 && currentBoardState[(from+rows) + 1] != type && currentBoardState[(from+(2*rows) + 2)] == 0){
-                possibleToRemove += [(from+rows) + 1]
-                //recursiveJumpKing(from: (from+(2*rows)) + 2, type: type)
-            }else if(checkOneStepRight(from: from) && checkOneStepForward(from: from) && currentBoardState[(from+rows) + 1] == 0 ){
+                possibleMoves += [(from+(2*rows)) + 2]
+                //recursiveJumpKing(previous: from,current: (from+(2*rows)) + 2, type: type)
+            }else if(checkOneStepRight(from: from) && checkOneStepForward(from: from) && currentBoardState[(from+rows) + 1] == 0 && firstMove){
                 possibleMoves += [(from+rows+1)]
             }
         }
         if(checkOneStepBackward(from: from)){
             if(currentBoardState[(from-rows) - 1] != 0 && currentBoardState[(from-rows) - 1] != type &&
                 currentBoardState[(from-(2*rows) - 2)] == 0){
-                possibleToRemove += [(from-rows) - 1]
-                recursiveJumpKing(previous: from,from: (from-(2*rows)) - 2, type: type)
-            }else if(checkOneStepLeft(from: from) && checkOneStepBackward(from: from) && currentBoardState[(from-rows) - 1] == 0){
+                possibleMoves += [(from-(2*rows)) - 2]
+                //recursiveJumpKing(previous: from,current: (from-(2*rows)) - 2, type: type)
+            }else if(checkOneStepLeft(from: from) && checkOneStepBackward(from: from) && currentBoardState[(from-rows) - 1] == 0 && firstMove){
                 possibleMoves += [(from-rows-1)]
             }
             if(currentBoardState[(from-rows) + 1] != 0 && currentBoardState[(from-rows) + 1] != type &&
                 currentBoardState[(from-(2*rows) + 2)] == 0){
-                possibleToRemove += [(from-rows) + 1]
-                //recursiveJumpKing(from: (from-(2*rows)) + 2, type: type)
-            }else if(checkOneStepRight(from: from) && checkOneStepBackward(from: from) && currentBoardState[(from-rows) + 1] == 0){
+                possibleMoves += [(from-(2*rows)) + 2]
+                //recursiveJumpKing(previous: from,current: (from-(2*rows)) + 2, type: type)
+            }else if(checkOneStepRight(from: from) && checkOneStepBackward(from: from) && currentBoardState[(from-rows) + 1] == 0 && firstMove){
                 possibleMoves += [(from-rows+1)]
             }
         }
     }
-    func recursiveJumpKing(previous: Int,from: Int, type: Int){
-        if(currentBoardState[from] == 0){
-            possibleMoves += [from]
+    func recursiveJumpKing(previous: Int,current: Int, type: Int){
+        print("previous: \(previous), current: \(current), type:\(type) ")
+        print(possibleMoves)
+        if(currentBoardState[current] == 0){
+            possibleMoves += [current]
         }
-        if(checkTwoStepForward(from: from)){
-            if(checkTwoStepLeft(from:from) && currentBoardState[(from+rows) - 1] != type && currentBoardState[(from+rows) - 1] != 0 && (from+(2*rows)-1) != previous){
-                possibleToRemove += [(from+rows) - 1]
-                recursiveJumpKing(previous: from, from: (from+(2*rows) - 2), type: type)
+        if(checkTwoStepForward(from: current)){
+            if(checkTwoStepLeft(from: current) && currentBoardState[(current+rows) - 1] != type && currentBoardState[(current+rows) - 1] != 0 && !possibleMoves.contains(current+(2*rows)-2)){
+                //recursiveJumpKing(previous: current, current: (current+(2*rows) - 2), type: type)
             }
-            if(checkTwoStepRight(from:from) && currentBoardState[(from+rows) + 1] != type && currentBoardState[(from+rows) + 1] != 0 && (from+(2*rows)+1) != previous){
-                possibleToRemove += [(from+rows) + 1]
-                recursiveJumpKing(previous: from,from: (from+(2*rows) + 2), type: type)
+            if(checkTwoStepRight(from:current) && currentBoardState[(current+rows) + 1] != type && currentBoardState[(current+rows) + 1] != 0 && !possibleMoves.contains(current+(2*rows)+2)){
+                //recursiveJumpKing(previous: current,current: (current+(2*rows) + 2), type: type)
             }
         }
-        if(checkTwoStepBackward(from: from)){
-            if(checkTwoStepLeft(from:from) && currentBoardState[(from-rows) - 1] != type && currentBoardState[(from-rows) - 1] != 0 && (from-(2*rows)-1) != previous){
-                possibleToRemove += [(from-rows) - 1]
-                recursiveJumpKing(previous: from,from: (from-(2*rows) - 2), type: type)
+        if(checkTwoStepBackward(from: current)){
+            if(checkTwoStepLeft(from:current) && currentBoardState[(current-rows) - 1] != type && currentBoardState[(current-rows) - 1] != 0 && !possibleMoves.contains(current-(2*rows)-2)){
+                //recursiveJumpKing(previous: current,current: (current-(2*rows) - 2), type: type)
             }
-            if(checkTwoStepRight(from:from) && currentBoardState[(from-rows) + 1] != type && currentBoardState[(from-rows) + 1] != 0 && (from-(2*rows)+1) != previous){
-                possibleToRemove += [(from-rows) + 1]
-                recursiveJumpKing(previous: from,from: (from-(2*rows) + 2), type: type)
+            if(checkTwoStepRight(from:current) && currentBoardState[(current-rows) + 1] != type && currentBoardState[(current-rows) + 1] != 0 && !possibleMoves.contains(current-(2*rows)+2)){
+                //recursiveJumpKing(previous: current,current: (current-(2*rows) + 2), type: type)
             }
         }
     }
     
     func generatePossibleMoves(from: Int){
         print("--- generatePossibleMove ---")
+        print(possibleMoves)
         switch currentBoardState[from]{
         case 0:
             print("empty")
         case 1:
             initialMoveForward(from: from, type: typeToPlayer(type: currentBoardState[from]))
-            print("white draught")
+            //print("white draught")
         case 2:
             initialMoveBackward(from: from, type: typeToPlayer(type: currentBoardState[from]))
-            print("black draught")
+            //print("black draught")
         case 3:
             initialMoveKing(from: from, type: typeToPlayer(type: currentBoardState[from]))
-            print("white draught king")
+            //print("white draught king")
         case 4:
             initialMoveKing(from: from,type: typeToPlayer(type: currentBoardState[from]))
-            print("black draught king")
+            //print("black draught king")
         default:
             print("hmmmm")
         }
     }
-    
-    func removePiece(from: Int,to: Int){
-        var current = to
-        while(current != from){
-            for i in 0..<possibleToRemove.count{
-                if((current-columns-1) == possibleToRemove[i]){
-                    toRemove += [current-columns-1]
-                    current = (current-(2*columns)) - 2
-                }else if((current-columns+1) == possibleToRemove[i]){
-                    toRemove += [current-columns+1]
-                    current = (current-(2*columns)) + 2
-                }else if((current+columns-1) == possibleToRemove[i]){
-                    toRemove += [current+columns-1]
-                    current = (current+(2*columns)) - 2
-                }else if((current+columns+1) == possibleToRemove[i]){
-                    toRemove += [current+columns+1]
-                    current = (current+(2*columns)) + 2
-                }
-            }
-        }
-    }
-    func removePieceBackward(from: Int,to: Int){
-        var current = to
-        while(current != from){
-            for i in 0..<possibleToRemove.count{
-                if((current+columns-1) == possibleToRemove[i]){
-                    toRemove += [current+columns-1]
-                    current = (current+(2*columns)) - 2
-                }else if((current+columns+1) == possibleToRemove[i]){
-                    toRemove += [current+columns+1]
-                    current = (current+(2*columns)) + 2
-                }
-            }
-        }
-    }
-    
-    func removePieces(){
-        if(toRemove != []){
-            for i in 0..<toRemove.count{
-                currentBoardState[toRemove[i]] = 0
-            }
+    func removePieces(from: Int, to: Int){
+        if(from+(2*columns)-2 == to){
+            toRemove = from+columns-1+1
+            currentBoardState[from+columns-1] = 0
+        }else if(from+(2*columns)+2 == to){
+            toRemove = from+columns+1+1
+            currentBoardState[from+columns+1] = 0
+        }else if(from-(2*columns)-2 == to){
+            toRemove = from-columns-1+1
+            currentBoardState[from-columns-1] = 0
+        }else if(from-(2*columns)+2 == to){
+            toRemove = from-columns+1+1
+            currentBoardState[from-columns+1] = 0
+        }else{
+            toRemove = 0
         }
     }
     
@@ -264,7 +233,6 @@ class DraughtsGameState: GameState{
         let legal = isLegal(to: to)
         if(legal){
             currentBoardState[to] = type
-            //playerWon()
         }
         return legal
     }
@@ -283,12 +251,14 @@ class DraughtsGameState: GameState{
                 currentBoardState[from] = 0
                 currentBoardState[to] = type
             }
-            playerWon()
+            removePieces(from: from, to: to)
+            lastPieceMoved = to
+            playerWon(current: to)
         }
         return legal
     }
     //win condition
-    func playerWon(){
+    func playerWon(current: Int){
         var whitePieces = 0
         var blackPieces = 0
         
@@ -305,16 +275,30 @@ class DraughtsGameState: GameState{
         }
         print("Player \(currentPlayer): \(isWinner)")
         if(!isWinner){
-            print("change player")
-            changePlayer()
+            possibleMoves.removeAll()
+            generatePossibleMoves(from: current)
+            print("first move: \(firstMove)")
+            if(firstMove){
+                print("change player first move")
+                changePlayer()
+            }else if(!firstMove && possibleMoves == []){
+                print("change player second move")
+                changePlayer()
+            }else{
+                print("player not changed")
+                firstMove = false
+            }
+
         }
     }
     //changes the current player
     func changePlayer(){
-        if(super.currentPlayer == 1){
-            super.currentPlayer = 2
+        firstMove = true
+        lastPieceMoved = 0
+        if(currentPlayer == 1){
+            currentPlayer = 2
         }else{
-            super.currentPlayer = 1
+            currentPlayer = 1
         }
     }
     func typeToPlayer(type: Int) -> Int{

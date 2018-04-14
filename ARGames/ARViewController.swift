@@ -78,7 +78,7 @@ class ARViewController: UIViewController {
             
             if(hitTestResults.first?.node.parent?.name != "board"){
                 let node = hitTestResults.first?.node.parent
-                print("Start: " + "\(node?.name)")
+                //print("Start: " + "\(node?.name)")
                 startNode = Int((node?.name)!)!
                 board.generatePossibleMoves(from: startNode)
             }
@@ -92,7 +92,7 @@ class ARViewController: UIViewController {
             
             if(hitTestResults.first?.node.parent?.name == "board"){
                 let node = hitTestResults.first?.node
-                print("end: " + "\(node?.name)")
+                //print("end: " + "\(node?.name)")
                 endNode = Int((node?.name)!)!
                 board.movePiece(from: startNode, to: endNode)
             }
